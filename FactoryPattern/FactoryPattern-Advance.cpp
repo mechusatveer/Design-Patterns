@@ -1,3 +1,8 @@
+
+/****************************************************/
+typedef Vehicle* (__stdcall *CreateVehicleFn)(void); 
+/****************************************************/
+
 #include<iostream>
 #include<map>
 using namespace std;
