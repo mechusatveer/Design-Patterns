@@ -3,6 +3,10 @@
 other way can be using object composition
 in which adapter compose object of adaptee
 
+Bridge pattern has a structure similar to an object adapter, but Bridge has a different intent: 
+It is meant to separate an interface from its implementation so that they can be varied easily 
+and independently. An adapter is meant to change the interface of an existing object.
+
 #include <iostream>
 
 // Desired interface (Target)
