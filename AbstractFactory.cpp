@@ -1,3 +1,10 @@
+ABSTRACT FACTORY PATTERN VS FACTORY METHOD
+What's the difference between Abstract Factory Pattern and Factory Method?
+
+Abstract Factory design pattern creates Factory.
+Factory design pattern creates Products.
+
+
 #include <iostream>
 
 class Button
