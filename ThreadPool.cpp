@@ -132,3 +132,14 @@ int main()
   work = boost::none;                                         // 4
   worker_threads.join_all();                                  // 5
 }
+
+
+The io_service::run() will run operations as long as there are asynchronous operations
+to perform. If, at any time, there are no asynchronous operations pending (or handlers being invoked),
+the run() call will return.
+
+However, there are some designs that would prefer that the run() call not exit until all work is done
+AND the io_service has explicitly been instructed that it's okay to exit. That's what io_service::work 
+is used for. By creating the work object (I usually do it on the heap and a shared_ptr), the io_service
+considers itself to always have something pending, and therefore the run() method will not return. 
+Once I want the service to be able to exit (usually during shutdown), I will destroy the work object.
