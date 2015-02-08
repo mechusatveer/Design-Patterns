@@ -109,3 +109,26 @@ int main( int argc, char * argv[] )
 	return 0;
 }
 	
+void CalculateFib(std::size_t n);
+
+int main()
+{
+  boost::asio::io_service io_service;
+  boost::optional<boost::asio::io_service::work> work =       // '. 1
+      boost::in_place(boost::ref(io_service));                // .'
+
+  boost::thread_group worker_threads;                         // -.
+  for(int x = 0; x < 2; ++x)                                  //   :
+  {                                                           //   '.
+    worker_threads.create_thread(                             //     :- 2
+      boost::bind(&boost::asio::io_service::run, &io_service) //   .'
+    );                                                        //   :
+  }                                                           // -'
+
+  io_service.post(boost::bind(CalculateFib, 3));              // '.
+  io_service.post(boost::bind(CalculateFib, 4));              //   :- 3
+  io_service.post(boost::bind(CalculateFib, 5));              // .'
+
+  work = boost::none;                                         // 4
+  worker_threads.join_all();                                  // 5
+}
