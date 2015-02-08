@@ -1,3 +1,11 @@
+
+Composition                   Agreegation
+Stronger relationship         Weak Relationship
+no sharing                    sharing can be
+Life cycle limited            Not limited
+Department cannot belong 
+to more than one university   Prof can be part of more than 1 department
+
 Composition is even stronger relationship than aggregation. 
 To test if we are dealing with composition, use no sharing rule for composition:
 part can belong to only one whole.
