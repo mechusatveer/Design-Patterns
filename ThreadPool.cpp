@@ -1,3 +1,24 @@
+http://exceptional-code.blogspot.co.uk/2013/05/a-c-thread-pool-implementation-using.html
+https://github.com/bilash/threadpool/
+
+The core idea of a thread pool is to have a number of worker threads always ready for 
+accepting work from the main process. The process receives requests for work and schedule
+those requests as doable tasks for the threads. This pattern resembles the well known 
+Readers-writers problem in Computer Science. There is a queue that is populated with 
+tasks as they arrive in the process. The request processing part is the writer and the 
+threads are the readers. Request processor will insert the work items as they arrive and
+the threads will pick up one item at a time from the queue in a First-In-First-Out fashion.
+
+So a thread pool basically consists of the three primary actors:
+
+1. A number of threads either waiting for or executing tasks.
+2. A number of service requests to the server from clients. 
+   Each request is considered a task to the threads.
+3. A queue holding the incoming service requests.
+
+
+
+
 #include <boost\asio.hpp>
 #include <iostream>
 #include <boost\thread\thread.hpp>
